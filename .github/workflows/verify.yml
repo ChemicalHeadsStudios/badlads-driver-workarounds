@@ -1,0 +1,14 @@
+name: Verify
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Every list parses and is signed by public.pem
+        run: |
+          for List in workarounds-*.json; do
+            python3 -m json.tool "$List" > /dev/null
+            base64 -d "$List.sig" > "$List.bin"
+            openssl dgst -sha256 -verify public.pem -signature "$List.bin" "$List"
+          done
