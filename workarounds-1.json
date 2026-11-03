@@ -1,13 +1,13 @@
 {
-	"revision": 2,
+	"revision": 3,
 	"workarounds": [
 		{
 			"id": "amd-32.0.21045.5002-mesh-shaders",
-			"_note": "BADLADS-5: RX 6800 XT GPU hangs in GeometryCluster passes on Adrenalin 26.8.1.",
+			"_note": "BADLADS-5: RX 6800 XT GPU hangs in GeometryCluster passes on Adrenalin 26.8.1; older drivers are held to the same.",
 			"vendor": "AMD",
 			"rhi": "D3D12",
-			"driverVersion": "==32.0.21045.5002",
-			"reason": "Mesh shaders are off: they hang the GPU on this AMD driver.",
+			"driverVersion": "<=32.0.21045.5002",
+			"reason": "Mesh shaders are off: they hang the GPU on this AMD driver and older ones.",
 			"cvars": { "r.GeometryCluster.MeshShaders": 0 }
 		}
 	]
