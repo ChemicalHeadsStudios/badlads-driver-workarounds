@@ -1,5 +1,5 @@
 {
-	"revision": 3,
+	"revision": 4,
 	"workarounds": [
 		{
 			"id": "amd-32.0.21045.5002-mesh-shaders",
@@ -9,6 +9,15 @@
 			"driverVersion": "<=32.0.21045.5002",
 			"reason": "Mesh shaders are off: they hang the GPU on this AMD driver and older ones.",
 			"cvars": { "r.GeometryCluster.MeshShaders": 0 }
+		},
+		{
+			"id": "intel-101.8864-cluster-wave-ops-mesh-shaders",
+			"_note": "BADLADS-5: Arc B580 GPU crash in GeometryCluster culling on driver 32.0.101.8864 (v0.9.18); older drivers are held to the same.",
+			"vendor": "Intel",
+			"rhi": "D3D12",
+			"driverVersion": "<=101.8864",
+			"reason": "Mesh shaders and wave operations are off: they crash the GPU on this Intel driver and older ones.",
+			"cvars": { "r.GeometryCluster.MeshShaders": 0, "r.GeometryCluster.WaveOps": 0 }
 		}
 	]
 }
